@@ -1,5 +1,7 @@
 body {
-  margin: 0;
+  background-color: aquamarine;
+  /* background: url(https://images5.alphacoders.com/110/1109788.jpg); */
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,3 +13,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+
+
+ .landing {
+  /* background: url(https://images5.alphacoders.com/110/1109788.jpg);  */
+   display: flex;
+  justify-content: space-evenly;
+  padding: 35px 35px;
+  align-items: center;
+} 

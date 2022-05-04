@@ -19,6 +19,10 @@ const { API_KEY_4 } = process.env;
 const { API_KEY_5 } = process.env;
 const { API_KEY_6 } = process.env;
 const { API_KEY_7 } = process.env;
+const { API_KEY_8 } = process.env;
+const { API_KEY_9 } = process.env;
+const { API_KEY_10 } = process.env;
+
 
 
 
@@ -28,7 +32,7 @@ const { API_KEY_7 } = process.env;
 const getApiInfo = async () => {
   try {
     const apiUrl = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_10}&addRecipeInformation=true&number=100`
     );
     const apiData = apiUrl.data?.results.map((e) => {
       return {
@@ -137,7 +141,7 @@ router.get("/recipes/:idReceta", async (req, res) => {
 router.get("/types", async (req, res) => {
   try {
     const info = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_10}&addRecipeInformation=true&number=100`
     );
     const types = info.data?.results.map((e) => e.diets); //extraemos info
     const newTypes = types.flat().concat("vegetarian", "ketogenic");
@@ -189,29 +193,3 @@ router.post("/recipe", async (req, res) => {
 });
 
 module.exports = router;
-
-//RUTA PARA OBTENER LAS RECETAS POR ID (PARAMS) SIN ID
-// router.get("/recipes/:idReceta", async (req, res) => {
-//   const idReceta = req.params.idReceta;
-//   let totalRecipes = await getAllRecipes();
-//   if (idReceta) {
-//     let recipesById = await totalRecipes.filter((e) => e.id == idReceta);
-//     if (recipesById.length) {
-//       recipesById.map((e) => {
-//         return {
-//           title: e.title,
-//           summary: e.summary,
-//           spoonacularScore: e.spoonacularScore,
-//           healthScore: e.healthScore,
-//           diets: e.diets,
-//           image: e.image,
-//           dishTypes: e.dishTypes,
-//         };
-//       });
-//       res.status(200).json(recipesById);
-//     } else {
-//       res.status(400).send("No id");
-//       // console.log(recipesById);
-//     }
-//   }
-// });

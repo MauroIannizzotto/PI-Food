@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap");
+.recipeContainer {
+    border: initial;
+    width: 80%;
+    height: 50vw;
+    margin: 15px 0px 0px 200px;
+    padding: 5px;
+    border-radius: 20px;
+    box-shadow: 5px 2px 15px 0px rgb(195, 194, 194);
+    background-color: antiquewhite;
+    backdrop-filter: blur(200px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+    opacity: 0.95;
+  }
+  
+  #buttonReturn {
+    background-color: #f9ffea;
+    border-radius: 4px;
+    border: none;
+    width: 150px;
+    font-size: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 4px;
+    transition: all 0.3s ease 0s;
+  }
+  #buttonReturn:hover {
+    background-color: rgb(32, 35, 44);
+    color: antiquewhite;
+  }
+  .recipeContainer2 {
+    position: relative;
+    right: 100px;
+    border-radius: 20px;
+    width: 300px;
+    height: 46.5vw;
+    margin-top: 1.5vw;
+    background-color: #533535;
+    box-shadow: 0px 3px 12px 3px #1f1d36;
+    
+    }
+  .recipeDetail_text1 {
+    margin-left: 0px;
+    position:relative;
+    right: 50px;
+    font-size: 17px;
+    width: 70%;
+    height: 70%;
+    background-color: antiquewhite;
+    text-align: justify;
+   
+  }
+
+  #title {
+    font-size: 30px;
+    margin-bottom: 7px;
+    font-family: 'Ms Madi', cursive;
+  }
+  #title2 {
+    font-size: 30px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+     font-family: 'Ms Madi', cursive;
+  }
+
+  #body {
+    font-family: 'Charm', cursive;
+  }
+
+  #body2 {
+    font-family: 'Charm', cursive;
+  }
+  
+  
+  .recipeContainer2 h2 {
+    color: antiquewhite;
+    padding: 5px;
+    font-size: 17px;
+    font-family: 'Charm', cursive;
+  
+  }
+  .recipeContainer2 h1 {
+    color: #e2c275;
+    padding: 5px 6px 0px 6px;
+    font-size: 31px;
+    font-family: 'Charm', cursive;
+  }
+

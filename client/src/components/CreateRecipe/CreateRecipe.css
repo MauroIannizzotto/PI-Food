@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap");
+
+.formContainer {
+  border: initial;
+  width: 50%;
+  height: 42.5vw;
+  margin: 20px 0px 0px 250px;
+  padding: 5px;
+  border-radius: 20px;
+  box-shadow: 5px 2px 15px 0px rgb(195, 194, 194);
+  background-color: antiquewhite;
+  backdrop-filter: blur(200px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+  opacity: 0.9;
+}
+h1 {
+    color: rgb(8, 5, 1);
+    font-family: 'Ms Madi', cursive;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+    margin: 0 0 12px;
+    text-align: center;
+    margin-left: 30px;
+    margin-top: 5px;
+  }
+
+.inputs {
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border: 1px solid #f1f1f1;
+  border-radius: 1rem;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 90%;
+  height:45%;
+}
+
+label {
+  font-family: 'Charm', cursive;
+  font-size: 25px;
+  font-weight: 100;
+  color: blanchedalmond;
+  padding: 3px;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.textarea {
+  float: right;
+  resize: none;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: 60%;
+  padding: 3px;
+  margin-top: 8px;
+  margin-right: 5px;
+  transition: width 0.35s ease-in-out;
+  background: transparent;
+  color: blanchedalmond;
+  font-size: large;
+}
+
+input {
+  float: right;
+  width: 60%;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  padding: 3px;
+  margin-top: 8px;
+  margin-right: 5px;
+  transition: width 0.35s ease-in-out;
+  background: transparent;
+  color: blanchedalmond;
+  font-size: large;
+}
+
+
+.createButton {
+    padding: 2px;
+    margin: 2px;
+    width: 200px;
+    font-family: 'Charm', cursive;
+    font-size: 19px;
+    border-radius: 5px;
+    border: 2px solid rgba(182, 76, 6, 0.911);
+    background-color: rgb(255, 255, 255);
+    color: rgb(212, 79, 79);
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    margin-top: 10px;
+    margin-right: 30px;
+
+  }
+  .createButton:hover {
+    background-color: rgb(206, 107, 25);
+    color: white;
+  }
+  .returnButton {
+    padding: 1px;
+    margin: 1px;
+    width: 150px;
+    font-family: 'Charm', cursive;
+    font-size: 19px;
+    border-radius: 5px;
+    border: 2px solid rgba(182, 76, 6, 0.911);
+    background-color: rgb(255, 255, 255);
+    color: rgb(212, 79, 79);
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    margin-top: 500px;
+    margin-left: 275px;
+  }
+  .returnButton:hover {
+    background-color: rgb(206, 107, 25);
+    color: white;
+  }
+  
+.tipoDeDietas {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(124, 24, 24);
+  background-color: rgba(122, 36, 36, 0.4);
+  color: white;
+  border: 1px solid #f1f1f1;
+  border-radius: 1rem;
+  position: absolute;
+  top: 77%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 70%;
+  height: 38%;
+  padding: 5px;
+}
+.tipoDeDietas label {
+        font-family: 'Charm', cursive;
+        font-size: 25px;
+        font-weight: 100;
+        color: blanchedalmond;
+        padding: 3px;
+        margin-right: 500px;
+}
+.opciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  width: 90%;
+}
+.opciones div {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-around;
+    width: 200px;
+    height: 40px;
+} 
+.box2 {
+border-radius: 8px;
+  border: none;
+  margin: 10px 10px 0px 00px;
+}
+.box  h3{
+    border-radius: 8px;
+      border: none;
+      margin: 0px 0px 0px 15px;
+    }

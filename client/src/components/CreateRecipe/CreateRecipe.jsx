@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { postRecipe, getDiets } from "../actions";
-
+import { postRecipe, getDiets } from "../../actions";
+import "./CreateRecipe.css"
 //---------- VALIDACIONES -----------
 
 function validate(input) {
@@ -56,12 +56,6 @@ export default function RecipeCreate() {
     });
   }
 
-  function handleDelete(e){
-    setInput({
-      ...input,
-      diets: input.diets.filter(el => el !== e)
-    })
-  }
 
   function handleSelectStep(e) {
     setInput({
@@ -94,12 +88,10 @@ export default function RecipeCreate() {
 
   //renderizado
   return (
-    <div>
-      <Link to="/home">
-        <button>Return</button>
-      </Link>
+    <div className="formContainer">
       <h1>Create your own Recipe</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
+      <div className="inputs">
         <div>
           <label>Name: </label>
           <input
@@ -111,7 +103,7 @@ export default function RecipeCreate() {
           {errors.title && <p>{errors.title}</p>}
         </div>
         <div>
-          <label>Image:</label>
+          <label>Image: </label>
           <input
             type="url"
             value={input.image}
@@ -129,7 +121,7 @@ export default function RecipeCreate() {
           />
         </div>
         <div>
-          <label>Healthy Food Level</label>
+          <label>Healthy Food Level: </label>
           <input
             type="integer"
             value={input.healthScore}
@@ -140,6 +132,7 @@ export default function RecipeCreate() {
         <div>
           <label>Summary: </label>
           <input
+            className="textarea"
             type="text"
             value={input.summary}
             name="summary"
@@ -151,134 +144,92 @@ export default function RecipeCreate() {
         <div>
           <label>Steps: </label>
           <input
+            className="textarea"
             type="text"
             value={input.steps}
             name="steps"
             onChange={(e) => handleSelectStep(e)}
+            id="steps"
           />
         </div>
-
-        <select onChange={(e) => handleSelect(e)}>
-          <option value="diets">diets</option>
-
-          {diets.map((e) => (
-            <option value={e.title}>{e.title}</option>
-          ))}
-        </select>
-
-        <ul>
-          <li>{input.diets.map((e) => e + ", ")}</li>
-        </ul>
-
-
-
-
-        {/* <div>
-          <label>Diets:</label>
-          {diets.map((e) => (
-            <input
-              type="checkbox"
-              value={e.title}
-              name={e.title}
-              onChange={(e) => handleSelect(e)}
-            >
-              {e.title}
-            </input>
-          ))}
-        </div> */}
-
-        {/* <div>
-          <label>Diets:</label>
-          <label>
-            <input
-              type="checkbox"
-              name="dairy free"
-              value="dairy free"
-              onChange={(e) => handleCheck(e)}
-            />
-            Dairy Free
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="gluten free"
-              value="gluten free"
-              onChange={(e) => handleCheck(e)}
-            />
-            Gluten Free
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="lacto ovo vegetarian"
-              value="lacto ovo vegetarian"
-              onChange={(e) => handleCheck(e)}
-            />
-            Lacto Ovo Vegetarian
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="fodmap friendly"
-              value="fodmap friendly"
-              onChange={(e) => handleCheck(e)}
-            />
-            Fodmap Friendly
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="paleolithic"
-              value="paleolithic"
-              onChange={(e) => handleCheck(e)}
-            />
-            Paleolithic
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="pescatarian"
-              value="pescatarian"
-              onChange={(e) => handleCheck(e)}
-            />
-            Pescatarian
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="primal"
-              value="primal"
-              onChange={(e) => handleCheck(e)}
-            />
-            Primal
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="vegan"
-              value="vegan"
-              onChange={(e) => handleCheck(e)}
-            />
-            Vegan
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="whole 30"
-              value="whole 30"
-              onChange={(e) => handleCheck(e)}
-            />
-            whole 30
-          </label>
-        </div> */}
-        <button type="submit">Create Recipe</button>
-      </form>
-      {input.diets.map(e => 
-        <div>
-          <p>{e}</p>
-          <button onClick={() => handleDelete(e)}>x</button>
         </div>
-        )}
+        <div className="tipoDeDietas">
+          <div>
+            <label>Diets:</label>
+            <div className="opciones">
+              {diets.map((e) => (
+                <div className="box">
+                  <input
+                  className="box2"
+                    type="checkbox"
+                    value={e.title}
+                    name={e.title}
+                    onChange={(e) => handleSelect(e)}
+                  />
+                  <h3>{e.title}</h3>
+                </div> 
+                       ))}
+                       </div>
+                     </div>
+                   </div>
+        <button className="createButton" type="submit">Create Recipe</button>
+      </form>
+    <Link to="/home">
+        <button className="returnButton">Return</button>
+      </Link>
+
     </div>
   );
 }
+
+
+
+
+
+        // {/* <select onChange={(e) => handleSelect(e)}>
+        //   <option value="diets">diets</option>
+
+        //   {diets.map((e) => (
+        //     <option value={e.title}>{e.title}</option>
+        //   ))}
+        // </select>
+
+        // <ul>
+        //   <li>{input.diets.map((e) => e + ", ")}</li>
+        // </ul> */}
+
+
+
+
+        // {/* <div>
+        //   <label>Diets:</label>
+        //   {type.map((e) => (
+        //     <input
+        //       type="checkbox"
+        //       value={e.title}
+        //       name={e.title}
+        //       onChange={(e) => handleSelect(e)}
+        //     >
+        //       {e.title}
+        //     </input>
+        //   ))}
+        // </div> */}
+
+
+// <div className="tipoDeDietas">
+//           <div>
+//             <label>Diets:</label>
+//             <div className="opciones">
+//               {types.map((e) => (
+//                 <div>
+//                   <input
+//                     type="checkbox"
+//                     value={e.title}
+//                     name={e.title}
+//                     onChange={(e) => handleSelect(e)}
+//                   />
+//                   <label>{e.title}</label>
+//                 </div> 
+
+
+    

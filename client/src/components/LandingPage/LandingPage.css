@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap");
+
+.landing {
+  background: #25252d
+    url("https://images.pexels.com/photos/4860455/pexels-photo-4860455.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+.landing_h1 {
+  height: 7vw;
+  text-align: center;
+  font-size: 3vw;
+  color: #1e2127;
+  position: absolute;
+  top: 46%;
+  left: 20%;
+  font-family: 'Ms Madi', cursive;
+}
+
+.landing_button {
+  padding: 2px;
+  margin: 2px;
+  width: 150px;
+  font-family: "Charm", cursive;
+  font-size: 19px;
+  border-radius: 5px;
+  border: 2px solid rgba(182, 76, 6, 0.911);
+  background-color: rgb(255, 255, 255);
+  color: rgb(212, 79, 79);
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  position: absolute;
+  top: 47%;
+  left: 55%;
+}
+
+.landing_button:hover {
+  background-color: rgb(206, 107, 25);
+  color: white;
+}

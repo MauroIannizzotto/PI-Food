@@ -1,4 +1,5 @@
 import React from "react";
+import "./Paginado.css";
 
 export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
   const pageNumber = [];
@@ -8,14 +9,18 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
   }
   return (
     <nav>
-      <ul >
-        <li className="number">
+      <div className="paginado">
         {pageNumber && //fijate si primero tiene algo el array de pageNumber
           pageNumber.map((number) => (
-            <button onClick={() => paginado(number)}>{number}</button>
-            ))}
-            </li>
-      </ul>
+            <button
+              className="number"
+              key={number}
+              onClick={() => paginado(number)}
+            >
+              {number}
+            </button>
+          ))}
+      </div>
     </nav>
   );
 }

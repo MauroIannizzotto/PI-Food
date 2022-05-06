@@ -48,6 +48,7 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
     case "ORDER_BY_NAME":
+   
       let sorteredArr =
         action.payload === "asc"
           ? state.recipes.sort(function (a, b) {

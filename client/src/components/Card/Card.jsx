@@ -9,7 +9,7 @@ export default function Card({ title, image, diets, id }) {
         <h3>{title}</h3>
       </div>
       <div className="card_info2">
-        <h5>{diets}</h5>
+        <h5>Diets: {diets}</h5>
       </div>
       <div className="card_img">
         <img src={image} alt="img not found" width="300px" height="200px" />

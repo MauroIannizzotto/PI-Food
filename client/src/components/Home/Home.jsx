@@ -69,7 +69,7 @@ export default function Home() {
             defaultValue="sortByName"
             onChange={(e) => handleOrderByName(e)}
           >
-            <option value="sortByName">Sort By Name</option>
+            <option value="sortByName" select disabled>Sort By Name</option>
             <option value="asc">A-Z</option>
             <option value="desc">Z-A</option>
           </select>
@@ -78,7 +78,7 @@ export default function Home() {
             defaultValue="sortByScore"
             onChange={(e) => handleOrderByScore(e)}
           >
-            <option value="sortByScore">Sort By Score</option>
+            <option value="sortByScore" select disabled>Sort By Score</option>
             <option value="high">HIGHEST SCORE</option>
             <option value="low">LOWEST SCORE</option>
           </select>

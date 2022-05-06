@@ -8,11 +8,12 @@ import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.css";
 
 export default function NavBar() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   function handleClick(e) {
-    e.preventDefault();
-    dispatch(getRecipes());
+    // e.preventDefault();
+    // dispatch(getRecipes());}
+    window.location.reload();
   }
   return (
     <div className="navbar">

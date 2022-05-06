@@ -110,6 +110,7 @@ router.get("/recipes", async (req, res) => {
             );
     } else {
       res.status(200).json(totalRecipes);
+      
     }
   } catch (error) {
     res.status(400).send("Error del catch");
@@ -166,7 +167,7 @@ router.post("/recipe", async (req, res) => {
   try {
     let { title, summary, spoonacularScore, healthScore, steps, diets, image } =
       req.body;
-
+      
     let recipeCreated = await Recipe.create({
       title,
       summary,

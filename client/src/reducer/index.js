@@ -78,23 +78,15 @@ function rootReducer(state = initialState, action) {
       let sorteredByScore =
         action.payload === "high"
           ? state.recipes.sort(function (a, b) {
-              if (a.spoonacularScore > b.spoonacularScore) {
-                return 1;
-              }
-              if (b.spoonacularScore > a.spoonacularScore) {
-                return -1;
-              }
-              return 0;
-            })
+            // return sorteredByScore.sort((a,b)=>{
+              return b.spoonacularScore - a.spoonacularScore
+          })
+          
           : state.recipes.sort(function (a, b) {
-              if (a.spoonacularScore > b.spoonacularScore) {
-                return -1;
-              }
-              if (b.spoonacularScore > a.spoonacularScore) {
-                return 1;
-              }
-              return 0;
-            });
+            // return sorteredByScore.sort((a,b)=>{
+              return a.spoonacularScore - b.spoonacularScore
+           
+          })
       return {
         ...state,
         recipes: sorteredByScore,

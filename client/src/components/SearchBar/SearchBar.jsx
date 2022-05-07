@@ -17,7 +17,7 @@ export default function SearchBar() {
 
   function handleSubmit(e){
     e.preventDefault()
-    dispatch(getRecipesByName(name)); //despacha la funcion con lo que hay en el estado local(nombre) para que se lo mande al back
+    dispatch(getRecipesByName(name.toLocaleLowerCase())); //despacha la funcion con lo que hay en el estado local(nombre) para que se lo mande al back
     setName("");
   }
   return (  

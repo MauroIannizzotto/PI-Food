@@ -10,7 +10,7 @@ import "./CreateRecipe.css";
 function validate(input) {
   let errors = {};
 
-  if(!/^[A-Za-z]+$/.test(input.title)) errors.title='Invalid name. Only Letters'
+  if(!/^[a-zA-Z\s]*$/.test(input.title)) errors.title='Invalid name. Only Letters'
   if (!input.title) {
     errors.title = "Please insert a Name to creat a Recipe";
   }
@@ -19,6 +19,9 @@ function validate(input) {
   } 
   if (input.spoonacularScore < 0 || input.spoonacularScore > 100 ) {
     errors.spoonacularScore = "Please insert a numer 1 to 100";
+  } 
+  if (input.healthScore < 0 || input.healthScore > 100 ) {
+    errors.healthScore = "Please insert a numer 1 to 100";
   } 
   return errors;
 }
@@ -134,7 +137,7 @@ export default function RecipeCreate() {
               name="spoonacularScore"
               onChange={(e) => handleInputChange(e)}
             />
-  
+            {errors.spoonacularScore && <h5>{errors.spoonacularScore}</h5>}
           </div>
           <div>
             <label>Healthy Food Level: </label>
@@ -144,6 +147,7 @@ export default function RecipeCreate() {
               name="healthScore"
               onChange={(e) => handleInputChange(e)}
             />
+            {errors.healthScore && <h5 >{errors.healthScore}</h5>}
           </div>
           <div>
             <label>Summary: </label>
@@ -188,7 +192,7 @@ export default function RecipeCreate() {
             </div>
           </div>
         </div>
-        {errors.title || errors.summary ?
+        {errors.title || errors.summary || errors.spoonacularScore || errors.healthScore ?
         <button className="createButton2" select disabled type="submit">
           Create Recipe 
         </button> :

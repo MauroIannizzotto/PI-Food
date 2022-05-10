@@ -13,6 +13,7 @@ import Paginado from "../Paginado/Paginado";
 import NavBar from "../NavBar/NavBar";
 import "./Home.css";
 
+
 //HOME SERA UN COMPONENTE FUNCIONAL
 export default function Home() {
   const dispatch = useDispatch();
@@ -23,17 +24,18 @@ export default function Home() {
 
   //para el paginado creamos varios estados actuales
   const [currentPage, setCurrentPage] = useState(1); //estado local para la pag actual
-  const [recipesPerPage, setrecipesPerPage] = useState(9); //estado para guardar la cantidad de rec x page
+  const [recipesPerPage, /*setrecipesPerPage*/] = useState(9); //estado para guardar la cantidad de rec x page
   const indexOfLastRecipe = currentPage * recipesPerPage; //9
   const indexOfFirtsRecipe = indexOfLastRecipe - recipesPerPage; //0
   //en la pagina 1 mi primer personaje va a tener el index 0 y el ultimo el 8
   const currentRecipe = allRecipes.slice(indexOfFirtsRecipe, indexOfLastRecipe);
+  const notFind = useSelector((state) => state.error);
   //toma todas las recetas y solamente devuelve desde el indice de la primer receta hasta el indice de la seg receta
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber); //cambia mi numero de pagina
   };
 
-  const [orden, setOrden] = useState("");
+  const [/*orden*/, setOrden] = useState("");
   //nos traemos las recetas del estado cuando se monta
 
   useEffect(() => {
@@ -42,6 +44,7 @@ export default function Home() {
 
   function handleFilterRecipes(e) {
     dispatch(filterRecipesbyDiets(e.target.value));
+    setCurrentPage(1);
   }
 
   function handleOrderByName(e) {
@@ -60,7 +63,6 @@ export default function Home() {
 
   return (
     <div className="home">
-      {/* <h1>Food Individual Proyect</h1> */}
       <NavBar />
       <div>
         <div className="filters">
@@ -69,7 +71,9 @@ export default function Home() {
             defaultValue="sortByName"
             onChange={(e) => handleOrderByName(e)}
           >
-            <option value="sortByName" select disabled>Sort By Name</option>
+            <option value="sortByName" select disabled>
+              Sort By Name
+            </option>
             <option value="asc">A-Z</option>
             <option value="desc">Z-A</option>
           </select>
@@ -78,7 +82,9 @@ export default function Home() {
             defaultValue="sortByScore"
             onChange={(e) => handleOrderByScore(e)}
           >
-            <option value="sortByScore" select disabled>Sort By Score</option>
+            <option value="sortByScore" select disabled>
+              Sort By Score
+            </option>
             <option value="high">HIGHEST SCORE</option>
             <option value="low">LOWEST SCORE</option>
           </select>
@@ -109,20 +115,27 @@ export default function Home() {
           />
         </div>
 
-        <div className="card_container">
-          {currentRecipe?.map((e) => {
-            return (
-              <Fragment>
-                <Card
-                  title={e.title}
-                  image={e.image}
-                  diets={e.diets.join(", ")}
-                  id={e.id}
-                  key={e.id}
-                />
-              </Fragment>
-            );
-          })}
+        <div >
+          {notFind.length === 0 ?(
+            <div className="card_container">
+              { currentRecipe?.map((e) => {
+                  return (
+                    <Fragment>
+                      <Card
+                        title={e.title}
+                        image={e.image}
+                        diets={e.diets.join(", ")}
+                        id={e.id}
+                        key={e.id}
+                      />
+                    </Fragment>
+                  );
+                })
+              }
+            </div>
+          ): (       
+          <p>{notFind}</p>
+          )}
         </div>
       </div>
     </div>

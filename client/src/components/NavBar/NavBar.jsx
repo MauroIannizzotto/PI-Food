@@ -2,8 +2,8 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { getRecipes } from "../../actions";
+// import { useDispatch } from "react-redux";
+// import { getRecipes } from "../../actions";
 import SearchBar from "../SearchBar/SearchBar";
 import "./NavBar.css";
 

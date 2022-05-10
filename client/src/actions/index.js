@@ -16,12 +16,37 @@ export function getRecipes() {
 export function getRecipesByName(name) {
   return async function (dispatch) {
     var json = await axios.get(`http://localhost:3001/recipes?name=${name}`);
+    if(json.data.length === 0){
+      dispatch({
+        type:"ERROR",
+        payload: "Not recipe found"
+      })
+    }
     return dispatch({
       type: "GET_RECIPES_BY_NAME",
       payload: json.data,
     });
   };
 }
+
+// export function getRecipesByName(name) {
+//   return async function (dispatch) {
+//     var json = await axios.get("http://localhost:3001/recipes");
+//     let filtered = json.data.filter(e => e.diets.find(el => el.includes(name)))
+//     if(filtered.length === 0){
+//       dispatch({
+//         type:"ERROR",
+//         payload: "Not recipe found"
+//       })
+//     }
+//     return dispatch({
+//       type: "GET_RECIPES_BY_NAME",
+//       payload: filtered,
+//     });
+//   };
+// }
+
+
 
 export function getDiets() {
   return async function (dispatch) {
@@ -32,6 +57,23 @@ export function getDiets() {
     });
   };
 }
+
+/*
+
+export const getDiets = () => {
+   return async (dispatch) => {
+     return (fetch (`http://localhost:3001/types`)
+     .then (response => response.json())
+     .then(json => {
+       dispatch({type: "GET_DIETS" , payload: json})
+     })
+    )
+    .catch(err => console.log(err))
+  };
+};
+
+*/
+
 
 export function postRecipe(payload) {
   return async function (dispatch) {

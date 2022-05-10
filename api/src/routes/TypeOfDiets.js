@@ -19,7 +19,7 @@ const { API_KEY_10 } = process.env;
 router.get("/", async (req, res) => {
     try {
       const info = await axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_8}&addRecipeInformation=true&number=100`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
       );
       const types = info.data?.results.map((e) => e.diets); //extraemos info
       const newTypes = types.flat().concat("vegetarian", "ketogenic");

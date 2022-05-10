@@ -10,7 +10,9 @@ export default function Details(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    //SE MONTA / ACTUALIZA EL COMPONENTE
     dispatch(getDetails(props.match.params.id));
+    //TODO LO QUE SUCEDA DENTRO DEL RETURN ES CUANDO SE DESMONTA EL COMPONENTE
     return () => {dispatch(removeDetail())}
   }, [dispatch]);
 
@@ -34,7 +36,9 @@ export default function Details(props) {
           <h2>Score: {myRecipe[0].spoonacularScore}</h2>
           <h2>Healthy Food Level: {myRecipe[0].healthScore}</h2>
           <h2>Diets: {myRecipe[0].diets}</h2>
-          <h2>Dish Type: {myRecipe[0].dishTypes}</h2>
+          {myRecipe[0].dishTypes ?
+          (<h2>Dish Type: {myRecipe[0].dishTypes}</h2>) : <div></div>
+          } 
           </div>
           <div className="recipeDetail_text1">
           <p id="title">Summary: </p>

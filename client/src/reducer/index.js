@@ -2,9 +2,10 @@
 
 const initialState = {
   recipes: [],
-  allRecipes: [],
+  allRecipes: [], //CREADA PARA LAS DIETAS --> ALL
   diets: [],
   detail: [],
+  error: ""
 };
 
 function rootReducer(state = initialState, action) {
@@ -33,7 +34,6 @@ function rootReducer(state = initialState, action) {
           : allRecipes.filter((e) =>
               e.diets.find((e) => e.includes(action.payload))
             );
-      // console.log("VARIABLEE", statusFiltered);
       return {
         ...state,
         recipes: statusFiltered, //aplica sobre el estado de recipes
@@ -102,9 +102,16 @@ function rootReducer(state = initialState, action) {
         ...state,
         detail: [],
       };
+    case "ERROR":
+      return {
+        ...state,
+        error: action.payload
+      }
     default:
       return state; //InitialState
   }
+  
+  
 
 }
 

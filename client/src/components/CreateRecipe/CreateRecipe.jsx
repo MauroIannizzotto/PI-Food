@@ -32,8 +32,9 @@ export default function RecipeCreate() {
   const dispatch = useDispatch();
   const history = useHistory();
   const diets = useSelector((state) => state.diets); //me traigo el estado de las dietas con el useSelector
+  
+  //CREO ESTADOS LOCALES PARA ALMACENAR INFORMACION
   const [errors, setErrors] = useState({});
-
   const [input, setInput] = useState({
     title: "",
     image: "",
@@ -84,7 +85,7 @@ export default function RecipeCreate() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("RECETA EN CREACION", input);
+    // console.log("RECETA EN CREACION", input);
     dispatch(postRecipe(input));
     alert("New Recipe Created Succesfully");
     //reseteo para que quede vacio
@@ -100,6 +101,7 @@ export default function RecipeCreate() {
     history.push("/home");
   }
 
+  //EJECUTO LA ACCION CUANDO SE MONTA EL COMPONENTE
   useEffect(() => {
     dispatch(getDiets());
   }, [dispatch]);

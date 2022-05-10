@@ -32,3 +32,10 @@ module.exports = (sequelize) => {
     }
   });
 };
+
+// PARA PODER LOCALIZAR O DIFERENCIAR RECETA CREADA EN DB
+// createdInDb: {
+//   type: DataTypes.BOOLEAN,
+//   allowNull: false,
+//   defaultValue: true;
+// }

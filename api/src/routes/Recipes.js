@@ -15,12 +15,14 @@ const { API_KEY_9 } = process.env;
 const { API_KEY_10 } = process.env;
 
 
+///////////////////  FUNCIONES CONTROLADORAS  ///////////////////
+
 
 ////////// FUNCION PARA OBTENER LAS RECETAS DE LA API //////////
 const getApiInfo = async () => {
     try {
       const apiUrl = await axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_4}&addRecipeInformation=true&number=100`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_8}&addRecipeInformation=true&number=100`
       );
       const apiData = apiUrl.data?.results.map((e) => {
         return {
@@ -42,12 +44,13 @@ const getApiInfo = async () => {
     }
   };
   
+
   ////////// FUNCION PARA OBTENER LAS RECETAS DE LA BASE DE DATOS //////////
   const getDbInfo = async () => {
     let dbRecipes = await Recipe.findAll({
       include: {
         model: Diet,
-        attributes: ["title"],
+        attributes: ["title"],  //me traigo el nombre de las dietas
         through: {
           attributes: [],
         },
@@ -68,6 +71,7 @@ const getApiInfo = async () => {
     });
   };
   
+
   ////////// FUNCION PARA COMBINAR LAS RECETAS //////////
   const getAllRecipes = async () => {
     const apiData = await getApiInfo();
@@ -76,13 +80,16 @@ const getApiInfo = async () => {
     return infoTotal;
   };
   
+
+  //////////// RUTAS PARA TRAER INFORMACION DE LAS DIETAS  /////////////
+
   ////////// RUTA PARA OBTENER LAS RECETAS POR NAME (QUERY) //////////
   router.get("/", async (req, res) => {
     try {
       const name = req.query.name;
       // console.log("NAMEEE", name)
-      let totalRecipes = await getAllRecipes();
       // console.log("RECETAS TOTALES",totalRecipes);
+      let totalRecipes = await getAllRecipes();
       if (name) {
         let recipesByName = await totalRecipes.filter((e) =>
           e.title.toLowerCase().includes(name.toLowerCase())
@@ -92,10 +99,8 @@ const getApiInfo = async () => {
           ? // console.log("RECETAS FILTRADAAAS", recipesByName)
             res.status(200).json(recipesByName)
           : res
-              .status(404)
-              .send(
-                `El nombre "${name}" no corresponde a ninguna receta existente`
-              );
+              .status(200)
+              .json([])
       } else {
         res.status(200).json(totalRecipes);
         
@@ -106,6 +111,7 @@ const getApiInfo = async () => {
     }
   });
   
+
   ////////// RUTA PARA OBTENER LAS RECETAS POR ID (PARAMS) //////////
   router.get("/:idReceta", async (req, res) => {
     const idReceta = req.params.idReceta;

@@ -1,4 +1,4 @@
-const { Router } = require("express");
+ const { Router } = require("express");
 const { Diet, Recipe } = require("../db");
 const router = Router();
 

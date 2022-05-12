@@ -8,7 +8,7 @@ const agent = session(app);
 const recipe = {
   "title": "Tacos",
 	"summary": "Carne y verdura envuelta en masa",
-	"spoonacularScore": "77",
+	"spoonacularScore": "43",
 	"healthScore": "56",
 	"steps": ["Cocinar la verdura y la carne para luego colocarla dentro de la masa precalentada"],
 	"image": "tacos.png",
@@ -25,6 +25,9 @@ describe('Recipe routes', () => {
   }));
   beforeEach(() => Recipe.sync({ force: true })
     .then(() => Recipe.create(recipe)));
+
+    //-----------------------
+
   describe('GET /recipes', () => {
     it('should get status 200', () =>
       agent.get('/recipes')
@@ -39,7 +42,7 @@ describe('Recipe routes', () => {
       .expect('Content-Type', /json/)
     })
   });
-  describe('POST/ recipe', () => {
+  describe('POST /recipe', () => {
     it('Should post a recipe with status 200', () => {
       agent.post('/recipe')
       .send(recipe)

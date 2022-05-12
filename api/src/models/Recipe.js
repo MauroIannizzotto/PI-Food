@@ -9,10 +9,10 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     id: {
-      type: DataTypes.UUID, //uuid para que no se pise con el id de la api
+      type: DataTypes.UUID, 
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
-      primaryKey: true, //va a ser la clave primaria
+      primaryKey: true,
     },
     summary: {
       type: DataTypes.TEXT,
@@ -29,13 +29,13 @@ module.exports = (sequelize) => {
     },
     image: {
       type: DataTypes.TEXT
+    },
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
     }
   });
 };
 
-// PARA PODER LOCALIZAR O DIFERENCIAR RECETA CREADA EN DB
-// createdInDb: {
-//   type: DataTypes.BOOLEAN,
-//   allowNull: false,
-//   defaultValue: true;
-// }
+

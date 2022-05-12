@@ -13,6 +13,9 @@ const { API_KEY_7 } = process.env;
 const { API_KEY_8 } = process.env;
 const { API_KEY_9 } = process.env;
 const { API_KEY_10 } = process.env;
+const { API_KEY_11 } = process.env;
+const { API_KEY_12 } = process.env;
+
 
 
 ///////////////////  FUNCIONES CONTROLADORAS  ///////////////////
@@ -22,7 +25,7 @@ const { API_KEY_10 } = process.env;
 const getApiInfo = async () => {
     try {
       const apiUrl = await axios.get(
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_10}&addRecipeInformation=true&number=100`
       );
       const apiData = apiUrl.data?.results.map((e) => {
         return {
@@ -35,7 +38,6 @@ const getApiInfo = async () => {
           diets: e.diets,
           image: e.image,
           dishTypes: e.dishTypes,
-          //   imageType: e.imageType,
         };
       });
       return apiData;
@@ -67,6 +69,8 @@ const getApiInfo = async () => {
         healthScore: e.healthScore,
         diets: e.diets.map((e) => e.title),
         image: e.image,
+        createdInDb: e.createdInDb
+    
       };
     });
   };
@@ -81,7 +85,7 @@ const getApiInfo = async () => {
   };
   
 
-  //////////// RUTAS PARA TRAER INFORMACION DE LAS DIETAS  /////////////
+  //////////// RUTAS PARA TRAER INFORMACION DE LAS RECETAS  /////////////
 
   ////////// RUTA PARA OBTENER LAS RECETAS POR NAME (QUERY) //////////
   router.get("/", async (req, res) => {

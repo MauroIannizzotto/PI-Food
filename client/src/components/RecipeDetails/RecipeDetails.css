@@ -3,7 +3,7 @@
 .recipeContainer {
     border: initial;
     width: 80%;
-    height: 50vw;
+    height: 56vw;
     margin: 15px 0px 0px 200px;
     padding: 5px;
     border-radius: 20px;
@@ -29,6 +29,9 @@
     cursor: pointer;
     padding: 4px;
     transition: all 0.3s ease 0s;
+    position: absolute;
+    bottom: 2vw;
+    left: 50%
   }
   #buttonReturn:hover {
     background-color: rgb(32, 35, 44);
@@ -92,3 +95,20 @@
     font-family: 'Charm', cursive;
   }
 
+
+  #img{
+    position: absolute;
+    top: 30%;
+    left: 39.5%;
+    height: 15vw;
+    width: 15vw;
+  }
+  
+  #not_found2{
+    position: absolute;
+    top: 38%;
+    left: 43.5%;
+    color: rgba(0, 0, 0, 0.911);
+    font-size: 23px;
+  }
+  

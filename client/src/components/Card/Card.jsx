@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Card.css"
 
-export default function Card({ title, image, diets, id }) {
+export default function Card({ title, image, diets, id, }) {
   return (
     <div className="card">
       <div className="card_info">
@@ -21,6 +21,3 @@ export default function Card({ title, image, diets, id }) {
   );
 }
 
-
-//DUMB COMPONENT O COMPONENTE PRESENTACIONAL QUE RECIBE PARAMETROS ---> NO TIENEN LOGICA SOLO RENDERIZAN INFORMACION
-//ESTE COMPONENTE NO UTILIZA NADA DE REDUX YA QUE NO GENERA ESTADOS NI NADA

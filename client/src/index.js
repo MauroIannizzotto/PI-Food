@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from 'react-redux';
 import store from './store'
 
-//ENVOLVER EL ARCHIVO RAIZ EN UN PROVIDER PARA QUE REDUX NOS DE BOLA
+//ENVOLVER EL ARCHIVO RAIZ EN UN PROVIDER PARA REDUX
 ReactDOM.render(
   <Provider store={store}>
   <React.StrictMode> 

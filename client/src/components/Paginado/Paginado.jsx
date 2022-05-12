@@ -10,7 +10,7 @@ export default function Paginado({ recipesPerPage, allRecipes, paginado }) {
   return (
     <nav>
       <div className="paginado">
-        {pageNumber && //fijate si primero tiene algo el array de pageNumber
+        {pageNumber && 
           pageNumber.map((number) => (
             <button
               className="number"

@@ -1,33 +1,33 @@
-// import { GET_RECIPES } from './actions'
-
 const initialState = {
   recipes: [],
   allRecipes: [], //CREADA PARA LAS DIETAS --> ALL
   diets: [],
   detail: [],
-  error: ""
+  error: "",
 };
 
 function rootReducer(state = initialState, action) {
   switch (
-    action.type //verificamos los tipos de acciones que me llegan
+    action.type 
   ) {
-    //las acciones son objetos puros que tiene  un type que es la instruccion
-    //que indica que se deben ejecutar
+    
     case "GET_RECIPES":
       return {
         ...state,
-        recipes: action.payload, //trae los personajes y me los guarda en este estado
-        allRecipes: action.payload, // y tambien le pido que me los guarde en este estado
+        recipes: action.payload, 
+        allRecipes: action.payload, 
+        error:"",
+        detail: []
       };
 
     case "GET_RECIPES_BY_NAME":
       return {
         ...state,
         recipes: action.payload,
+        error:""
       };
     case "FILTER_BY_DIETS":
-      const allRecipes = state.allRecipes; //cada vez que hace el fltro toma el array completo
+      const allRecipes = state.allRecipes; 
       const statusFiltered =
         action.payload === "all"
           ? allRecipes
@@ -36,8 +36,9 @@ function rootReducer(state = initialState, action) {
             );
       return {
         ...state,
-        recipes: statusFiltered, //aplica sobre el estado de recipes
+        recipes: statusFiltered,
       };
+
     case "GET_DIETS":
       return {
         ...state,
@@ -77,15 +78,13 @@ function rootReducer(state = initialState, action) {
       let sorteredByScore =
         action.payload === "high"
           ? state.recipes.sort(function (a, b) {
-            // return sorteredByScore.sort((a,b)=>{
-              return b.spoonacularScore - a.spoonacularScore
-          })
-          
+              // return sorteredByScore.sort((a,b)=>{
+              return b.healthScore - a.healthScore;
+            })
           : state.recipes.sort(function (a, b) {
-            // return sorteredByScore.sort((a,b)=>{
-              return a.spoonacularScore - b.spoonacularScore
-           
-          })
+              // return sorteredByScore.sort((a,b)=>{
+              return a.healthScore - b.healthScore;
+            });
       return {
         ...state,
         recipes: sorteredByScore,
@@ -105,17 +104,19 @@ function rootReducer(state = initialState, action) {
     case "ERROR":
       return {
         ...state,
-        error: action.payload
-      }
+        error: action.payload,
+      };
+
+    case "REMOVE_RECIPE":
+      return {
+        ...state,
+        allRecipes: [],
+        recipes: [],
+      };
+
     default:
       return state; //InitialState
   }
-  
-  
-
 }
-
-
-
 
 export default rootReducer;

@@ -10,19 +10,20 @@ import "./CreateRecipe.css";
 function validate(input) {
   let errors = {};
 
-  if(!/^[a-zA-Z\s]*$/.test(input.title)) errors.title='Invalid name. Only Letters'
+  if (!/^[a-zA-Z\s]*$/.test(input.title))
+    errors.title = "Invalid name. Only Letters";
   if (!input.title) {
     errors.title = "Please insert a Name to creat a Recipe";
   }
   if (!input.summary) {
     errors.summary = "Please insert a Summary to creat a Recipe";
-  } 
-  if (input.spoonacularScore < 0 || input.spoonacularScore > 100 ) {
+  }
+  if (input.spoonacularScore < 0 || input.spoonacularScore > 100) {
     errors.spoonacularScore = "Please insert a numer 1 to 100";
-  } 
-  if (input.healthScore < 0 || input.healthScore > 100 ) {
+  }
+  if (input.healthScore < 0 || input.healthScore > 100) {
     errors.healthScore = "Please insert a numer 1 to 100";
-  } 
+  }
   return errors;
 }
 
@@ -32,7 +33,7 @@ export default function RecipeCreate() {
   const dispatch = useDispatch();
   const history = useHistory();
   const diets = useSelector((state) => state.diets); //me traigo el estado de las dietas con el useSelector
-  
+
   //CREO ESTADOS LOCALES PARA ALMACENAR INFORMACION
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
@@ -45,7 +46,7 @@ export default function RecipeCreate() {
     diets: [],
   });
 
-  //cada vez que se cambien o modifiquen mis inputs lo va a escuchar con esto
+  //--- HANDLERS
   function handleInputChange(e) {
     setInput({
       ...input,
@@ -149,7 +150,7 @@ export default function RecipeCreate() {
               name="healthScore"
               onChange={(e) => handleInputChange(e)}
             />
-            {errors.healthScore && <h5 >{errors.healthScore}</h5>}
+            {errors.healthScore && <h5>{errors.healthScore}</h5>}
           </div>
           <div>
             <label>Summary: </label>
@@ -160,7 +161,7 @@ export default function RecipeCreate() {
               name="summary"
               onChange={(e) => handleInputChange(e)}
             />
-            {errors.summary && <h5 >{errors.summary}</h5>}
+            {errors.summary && <h5>{errors.summary}</h5>}
           </div>
 
           <div>
@@ -194,20 +195,26 @@ export default function RecipeCreate() {
             </div>
           </div>
         </div>
-        {errors.title || errors.summary || errors.spoonacularScore || errors.healthScore ?
-        <button className="createButton2" select disabled type="submit">
-          Create Recipe 
-        </button> :
-         <button className="createButton" type="submit">
-         Create Recipe 
-       </button>
-        }
-
+        {errors.title ||
+        errors.summary ||
+        errors.spoonacularScore ||
+        errors.healthScore || input.title === "" ?  (
+          <button className="createButton2" select disabled type="submit">
+            Create Recipe
+          </button>
+        ) : (
+          <button className="createButton" type="submit">
+            Create Recipe
+          </button>
+        )}
       </form>
       <div className="returnButton">
-      <Link to="/home" style={{textDecoration:"none", color:"rgb(212, 79, 79)"}}>
-        <p >Return</p>
-      </Link>
+        <Link
+          to="/home"
+          style={{ textDecoration: "none", color: "rgb(212, 79, 79)" }}
+        >
+          <p>Return</p>
+        </Link>
       </div>
     </div>
   );

@@ -14,7 +14,6 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/recipe" component={CreateRecipe} />
           <Route path="/recipes/:id" component={RecipeDetails} />
-          {/* RUTA DINAMICA, RECIBE UN PARAMETRO QUE ES EL ID DEL PERSONAJE */}
         </Switch>
       </div>
     </BrowserRouter>
